@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "ironhack-alvaro-scraping-price",
+  "private_key_id": "5a6987840e6304f298a04dfcf1603b5b1316f72a",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDcwF1NQa48x+aK\nAYrmJLlvqWhnMEiGmq0e0izsf3xAEV/+JyYGWHKeo+2wkaUv4UamYF1+kHlfaYxd\ncanofKO7GXhDqOLuD3v6rd5+12I2pL5YMJsncGc+YSVDzQHnbGCwPaj40OO+MD6W\n7KxeNUpNDuSqJ+TQc+hIrqr+y9zCXPuGTpePf9R1OuI8grmlj05Us6Fz6iiqPklv\nA/VRe6vEPYmDw02c2IhBchBIvsz3wzrsLFOXUp+pIuj0S7eqZdPUeDxFLnkfOVOu\n4UbJcUJnEEpls/fxgWARgfr1eZdlDaIVkpZSKM7F0esFnSLGMffLjezFIf3uZh+a\n5/jgfC+DAgMBAAECggEAHWxPDfo9qOCfaUXtsgwzYongHl+F+IRK+TXcAq+2q2wa\nxoDdpXCKN9EzYAVMUQFD+JlqjMaL7ubeFyG3GwOV590WtbSf0/Q2EFe2tWMBi7VR\n9juQSpBFqpT/MbYfAANm2xwfgVPdBHS2EElpFhYgmlHBslj75g7fkeR6FS5Yn9fO\nbM4uzLnmMBzFs909apSe2SZsZy+D7IIiOD1FK5ukb4NgDSQpM/Ohk3filqrjrFN9\nUfCZTVlTzFNktyVyividvIE7VzKFNPzLbsNq2SumyTQbqL7LfG4HyPT1GNKli1Rb\nf3EzCgXdYPWdh/7GKwrSSnlai1uKB3QkAGclAZHY1QKBgQD6dsGNCJsyyn4EdQP8\nilj4Vn1DLjv+K+/FKwguyEsmy2x0MkZ/jj14auFPm6wvWi0zl+5bqAjRkvTZcxos\nlOBcrrDnP93j8gsIwy3Iykfo5W08BcxeAbimjSDMjiIa8YTs6Sk2uwNwiRJQP1Rr\nWCtKQ2v8SW6+Z9qshDR4b7gvbQKBgQDhoXsqb1lX9H6TQL51SlEnW6EzKJ2AeVon\nkSEOdBqXfUKDcW99UX5eousOGSgs7y0mXfgsDbW6XRFI8eNd3vPHrd7mOnd+xqzf\nBWNZcZNLioKfVdqSkbVsuo0SUIxtjKrhMD16KkngpebJwAmiOM9heg5hpTN6hTnP\n1C9f45RUrwKBgF9Ka10jFxj93XAIrRmZ8TuafFHg90Y+pRyYwKY74gvCfWK/9f51\nuYFk+I/3JE1nu6bTeQY6KhDCHpHUrvKjObFJbVit/dfJsNUGnRa1jyJWl3asphJm\nCUCklQP+V490sCQKmXmPMUHRhLwvPAkTJHU+rYjwz0d178aPDf98UdEJAoGBAIhn\nW1J4Jocp5CuZhIrb9tvYZUfMUguNUZeCAX3/auQScdeNCF22mrMTww6u3r7riVwc\nix/22dpk0UJMGaxyUOZyksKUrhESgwgA9eLo6qdMgVNaT900AX5N+WMNFxhTZirl\nQwVL84XARhnJ4wkTVywS4gbeHJUBXcXq/Qj3SIE5AoGAP71wOKougQM+M/M3RxUN\n5D4CwnCJmmFwmg2kwH72Lozx8mPajtW6lHpw+y1FC15irrISKjNkuJC+dtiKwa13\nde22cwwVb40OT5wIIuamx22fqtW3MkumfPFwWKDGshgGdpeOq/48vjVRhLnLLHRw\nh6BciKGx+dtZZHDhXt8MV54=\n-----END PRIVATE KEY-----\n",
+  "client_email": "ironhack-alvaro-scraping-price@ironhack-alvaro-scraping-price.iam.gserviceaccount.com",
+  "client_id": "106942911035256294087",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/ironhack-alvaro-scraping-price%40ironhack-alvaro-scraping-price.iam.gserviceaccount.com"
+}
