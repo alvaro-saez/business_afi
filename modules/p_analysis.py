@@ -35,10 +35,10 @@ from dotenv import load_dotenv, find_dotenv
 
 # ### - EMAIL ALERTS
 
-# In[86]:
+# In[2]:
 
 
-def business_afi_email_sender(receiver_email, filename_location, csv_name, body_email):
+def business_afi_email_sender(receiver_email, filename_location, csv_name, body_email,email_key):
 
     subject = "sillas y bienestar | "+ csv_name + " | " + str(datetime.today().strftime('%Y-%m-%d'))
     body = body_email 
@@ -92,7 +92,7 @@ def business_afi_email_sender(receiver_email, filename_location, csv_name, body_
 # In[87]:
 
 
-business_afi_email_sender("businessafiliacion@gmail.com","../files/out_of_stock_last_day.csv", "out_of_stock_last_day.csv", "CSV con productos descatalogados o fuera de stock")
+#business_afi_email_sender("businessafiliacion@gmail.com","../files/out_of_stock_last_day.csv", "out_of_stock_last_day.csv", "CSV con productos descatalogados o fuera de stock")
 
 
 # #### 2) none values
@@ -100,10 +100,10 @@ business_afi_email_sender("businessafiliacion@gmail.com","../files/out_of_stock_
 # In[70]:
 
 
-def email_none_values(df_single, df_append_new_files):
+def email_none_values(df_single, df_append_new_files,email_key):
     none_values = df_single[df_single["product_name"]=="none"].any().unique().tolist()
     if none_values == [True]:       
-        business_afi_email_sender("businessafiliacion@gmail.com", "../files/non_values_last_day.csv", "non_values_last_day.csv", "CSV con valores none")       
+        business_afi_email_sender("businessafiliacion@gmail.com", "../files/non_values_last_day.csv", "non_values_last_day.csv", "CSV con valores none",email_key)       
         return "ALERT ALVARO, exists none values"
     else:
         return "does not exist none values"
@@ -112,7 +112,7 @@ def email_none_values(df_single, df_append_new_files):
 # In[71]:
 
 
-email_none_values(df_single, df_append_new_files)
+#email_none_values(df_single, df_append_new_files)
 
 
 # #### 3) send the csv to have a backup
@@ -120,13 +120,13 @@ email_none_values(df_single, df_append_new_files)
 # In[72]:
 
 
-business_afi_email_sender("businessafiliacion@gmail.com", "../files/df_single.csv", "df_single.csv", "CSV PRINCIPAL como backup con el dataframe diario con todos los datos en formato csv")
+#business_afi_email_sender("businessafiliacion@gmail.com", "../files/df_single.csv", "df_single.csv", "CSV PRINCIPAL como backup con el dataframe diario con todos los datos en formato csv")
 
 
 # In[73]:
 
 
-business_afi_email_sender("businessafiliacion@gmail.com", "../files/df_append_new_files_last_day.csv", "df_append_new_files_last_day.csv", "CSV CON DATOS DEL DIA como backup con el dataframe diario en formato csv")
+#business_afi_email_sender("businessafiliacion@gmail.com", "../files/df_append_new_files_last_day.csv", "df_append_new_files_last_day.csv", "CSV CON DATOS DEL DIA como backup con el dataframe diario en formato csv")
 
 
 # In[ ]:

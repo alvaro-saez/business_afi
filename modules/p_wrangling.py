@@ -50,11 +50,6 @@ def conection_spreadsheet(scopes, credentials_location):
     print("spreadsheet conection done")
     return gc
 
-gc = conection_spreadsheet(["https://spreadsheets.google.com/feeds",
-         'https://www.googleapis.com/auth/spreadsheets',
-         "https://www.googleapis.com/auth/drive.file",
-         "https://www.googleapis.com/auth/drive"], '../credentials/credentials.json')
-
 
 # #### Step 1: Create or define the dataFrame
 # 
@@ -104,8 +99,6 @@ def main_df(location,gc):
     else: #f it doesn't give an error, it exists in csv and we won't do anything
         pass
 
-df_single = main_df("../files/df_single.csv",gc)
-
 
 # #### Step 2: Append new records in the df_single dataFrame - pd.concat()
 
@@ -128,8 +121,6 @@ def df_append_new_files(final_date_hyphen_products,final_date_slash_products,fin
     
     return df_append_new_files
 
-df_append_new_files = df_append_new_files(final_date_hyphen_products,final_date_slash_products,final_date_number_products,final_name_products,final_id_products,final_brand_products,final_price_products_list,final_price_products_status,urls_products_list)
-
 
 # In[26]:
 
@@ -143,8 +134,6 @@ def concat_df(df_single,df_append_new_files):
     elif df_append_new_files["date_hyphen"][0] != df_single["date_hyphen"][len(df_single)-1]:
         df_single = pd.concat([df_single, df_append_new_files], ignore_index=True)
         return df_single
-    
-df_single = concat_df(df_single,df_append_new_files)
 
 
 # ### b) Clean and Prepare the dataFrame
@@ -206,8 +195,6 @@ def correction_df_single(df_single):
 
     return df_single
 
-df_single = correction_df_single(df_single)
-
 
 # ### c) Create the price main of each product
 
@@ -221,9 +208,6 @@ def product_mean_dic(df_single):
         mean_dic[i] = int(round(df_single[df_single["product_id"] == i]["price"].mean(),0))
     return mean_dic
 
-product_mean = product_mean_dic(df_single### b) Clean and Prepare the dataFrame
-)
-
 
 # In[30]:
 
@@ -231,8 +215,6 @@ product_mean = product_mean_dic(df_single### b) Clean and Prepare the dataFrame
 def product_mean_dic_to_df(df_single,product_mean):
     df_single["product_mean"] = df_single["product_id"].apply(lambda x: product_mean[x])
     return df_single
-
-df_single = product_mean_dic_to_df(df_single,product_mean)
 
 
 # In[31]:
@@ -257,8 +239,6 @@ def product_mean_status_func_values(product_price,product_mean):
 def product_mean_status_func_apply(df_single):
     df_single["product_mean_status"] = df_single.apply(lambda x: product_mean_status_func_values(x["price"], x["product_mean"]), axis=1)
     return df_single
-
-df_single = product_mean_status_func_apply(df_single)
 
 
 # ### d) Create the category of each product
@@ -286,8 +266,6 @@ def product_category(df_single):
     df_single["product_category"] = df_single["url"].apply(categories_url)
     return df_single
 
-df_single = product_category(df_single)
-
 
 # ## EXPORT the dataFrames to CSVs
 
@@ -306,9 +284,6 @@ def export_files(df_single, df_append_new_files):
         none_values_df_to_csv = none_values_df.to_csv("../files/non_values_last_day.csv", sep=",", index=False)
     
     return "files exported successfully"
-
-export = export_files(df_single, df_append_new_files)
-export
 
 
 # In[ ]:

@@ -60,26 +60,25 @@ def update_spreadsheet(gc, spreadsheet_name, worksheet_name, dataframe):
 
 
 #sheet1 - df_single
-update_spreadsheet(gc, "business_afi_scraping_df_single", "df_single", df_single)
+#update_spreadsheet(gc, "business_afi_scraping_df_single", "df_single", df_single)
 
 
 # In[76]:
 
 
 #sheet2 - df_append_new_files
-update_spreadsheet(gc, "business_afi_scraping_last_day_files", "df_append_new_files", df_append_new_files)
+#update_spreadsheet(gc, "business_afi_scraping_last_day_files", "df_append_new_files", df_append_new_files)
 
 
 # In[77]:
 
 
 #sheet3 - out_of_stock_df
-def out_of_stock_spreadsheet(df_append_new_files):
+def out_of_stock_spreadsheet(df_append_new_files,gc):
     out_of_stock_df = df_append_new_files[df_append_new_files["status"] != "correcto"]
     update_spreadsheet(gc, "business_afi_scraping_last_day_files", "out_of_stock_df", out_of_stock_df)
     
     return "worksheet updated"
-out_of_stock_spreadsheet(df_append_new_files)
 
 
 # In[78]:
@@ -95,8 +94,6 @@ def non_values_spreadsheet(df_single):
         return "worksheet updated"
     else:
         return "worksheet updated, but there is no any none value"
-    
-non_values_spreadsheet(df_single)
 
 
 # In[ ]:

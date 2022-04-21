@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[3]:
 
 
 import pandas as pd
@@ -31,9 +31,18 @@ from dotenv import load_dotenv, find_dotenv
 
 # # A. p_acquisition
 
+# ### SET THE CREDENTIALS
+
+# In[4]:
+
+
+load_dotenv(find_dotenv("../credentials/.env"))
+email_key = os.environ.get("EMAIL_KEY") #EMAIL PASSWORD
+
+
 # ### SET THE URLS IN VARIABLES
 
-# In[3]:
+# In[5]:
 
 
 urls_ergonomia = [
@@ -56,7 +65,7 @@ urls_ergonomia = [
 ]
 
 
-# In[4]:
+# In[6]:
 
 
 #If want to add a new URL to the "ergonomia" category
@@ -65,7 +74,7 @@ def new_url_ergo(new_url):
     return "new url 'ergonomia' added"
 
 
-# In[5]:
+# In[7]:
 
 
 urls_oficina = [
@@ -80,7 +89,7 @@ urls_oficina = [
 ]
 
 
-# In[6]:
+# In[8]:
 
 
 #If want to add a new URL to the "oficina" category
@@ -89,7 +98,7 @@ def new_url_oficina(new_url):
     return "new url 'oficina' added"
 
 
-# In[7]:
+# In[9]:
 
 
 urls_rodilla = [
@@ -100,7 +109,7 @@ urls_rodilla = [
 ]
 
 
-# In[8]:
+# In[10]:
 
 
 #If want to add a new URL to the "rodilla" category
@@ -109,7 +118,7 @@ def new_url_rodilla(new_url):
     return "new url 'rodilla' added"
 
 
-# In[9]:
+# In[11]:
 
 
 urls_gaming = [
@@ -135,7 +144,7 @@ urls_gaming = [
 ]
 
 
-# In[10]:
+# In[12]:
 
 
 #If want to add a new URL to the "gaming" category
@@ -144,46 +153,40 @@ def new_url_gaming(new_url):
     return "new url 'gaming' added"
 
 
-# In[11]:
+# In[13]:
 
 
 #JOIN all the urls
 def full_urls(urls_ergonomia, urls_oficina, urls_rodilla, urls_gaming):
     urls_products_list_list = urls_ergonomia + urls_oficina + urls_rodilla + urls_gaming
     return urls_products_list_list
-    
-urls_products_list = full_urls(urls_ergonomia, urls_oficina, urls_rodilla, urls_gaming)
 
 
 # ### web scrapping
 
 # Obtain the HTML of all our URLs
 
-# In[12]:
+# In[14]:
 
 
 def parsed_content(urls_products_list):
     parsed_products_content_list = [bs4.BeautifulSoup(requests.get(i).content, "html.parser") for i in urls_products_list]
     return parsed_products_content_list
 
-parsed_products_content_list = parsed_content(urls_products_list)
-
 
 # Obtain the price info of its class
 
-# In[13]:
+# In[15]:
 
 
 def parsed_price_class(parsed_products_content_list):
     parsed_products_price_class = [i.find_all("span",{"class":"aawp-product__price aawp-product__price--current"})[0].text for i in parsed_products_content_list]
     return parsed_products_price_class
 
-parsed_products_price_class = parsed_price_class(parsed_products_content_list)
-
 
 # Obtain the final price
 
-# In[14]:
+# In[16]:
 
 
 def product_price(parsed_products_content_list,urls_products_list):
@@ -213,12 +216,10 @@ def product_price(parsed_products_content_list,urls_products_list):
                 print("revisar funcion price")
     return final_price_products_list
 
-final_price_products_list = product_price(parsed_products_content_list,urls_products_list)
-
 
 # Obtain if the product is out of stock or discontinued
 
-# In[15]:
+# In[17]:
 
 
 def product_status(parsed_products_content_list,urls_products_list):
@@ -244,12 +245,10 @@ def product_status(parsed_products_content_list,urls_products_list):
                 print("revisar funcion price")
     return final_price_products_status
 
-final_price_products_status = product_status(parsed_products_content_list,urls_products_list)
-
 
 # Create a function to handle possible erros in the product information
 
-# In[16]:
+# In[18]:
 
 
 def handling_error_vars_product(i,text):
@@ -263,7 +262,7 @@ def handling_error_vars_product(i,text):
 
 # Obtain the NAME of the different products
 
-# In[17]:
+# In[19]:
 
 
 def product_name(parsed_products_content_list):
@@ -279,12 +278,10 @@ def product_name(parsed_products_content_list):
     final_name_products = [handling_error_vars_product(i,"ficha_product_name='") for i in parsed_products_content_list]
     return final_name_products
 
-final_name_products = product_name(parsed_products_content_list)
-
 
 # Obtain the ID of the different products
 
-# In[18]:
+# In[20]:
 
 
 def product_id(parsed_products_content_list):
@@ -300,12 +297,10 @@ def product_id(parsed_products_content_list):
     final_id_products = [handling_error_vars_product(i,"ficha_product_id='") for i in parsed_products_content_list]
     return final_id_products
 
-final_id_products = product_id(parsed_products_content_list)
-
 
 # Obtain the BRAND of the different products
 
-# In[19]:
+# In[21]:
 
 
 def product_brand(parsed_products_content_list):
@@ -321,17 +316,15 @@ def product_brand(parsed_products_content_list):
     final_brand_products = [handling_error_vars_product(i,"ficha_product_brand='") for i in parsed_products_content_list]
     return final_brand_products
 
-final_brand_products = product_brand(parsed_products_content_list)
-
 
 # Obtain the DATE of the current day in different formats
 
 # 1. With HYPHEN. Ex: 2022-04-14
 
-# In[20]:
+# In[22]:
 
 
-def product_date_hyphen(parsed_products_content_list):
+def product_date_hyphen(urls_products_list):
 
     def handling_error_vars_product(i,text):
         try:
@@ -344,15 +337,13 @@ def product_date_hyphen(parsed_products_content_list):
     final_date_hyphen_products = [datetime.today().strftime('%Y-%m-%d') for i in range(len(urls_products_list))]
     return final_date_hyphen_products
 
-final_date_hyphen_products = product_date_hyphen(parsed_products_content_list)
-
 
 # 2. With SLASH. Ex: 2022/04/14
 
-# In[21]:
+# In[23]:
 
 
-def product_date_slash(parsed_products_content_list):
+def product_date_slash(urls_products_list):
 
     def handling_error_vars_product(i,text):
         try:
@@ -365,15 +356,13 @@ def product_date_slash(parsed_products_content_list):
     final_date_slash_products = [datetime.today().strftime('%Y/%m/%d') for i in range(len(urls_products_list))]
     return final_date_slash_products
 
-final_date_slash_products = product_date_slash(parsed_products_content_list)
-
 
 # 3. Without symbols. Ex: 20220414
 
-# In[22]:
+# In[24]:
 
 
-def product_date_number(parsed_products_content_list):
+def product_date_number(urls_products_list):
 
     def handling_error_vars_product(i,text):
         try:
@@ -386,7 +375,11 @@ def product_date_number(parsed_products_content_list):
     final_date_number_products = [int(datetime.today().strftime('%Y%m%d')) for i in range(len(urls_products_list))]
     return final_date_number_products
 
-final_date_number_products = product_date_number(parsed_products_content_list)
+
+# In[ ]:
+
+
+
 
 
 # In[ ]:
