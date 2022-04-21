@@ -1,6 +1,34 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+# In[1]:
+
+
+import pandas as pd
+import numpy as np
+import requests
+import bs4
+import re
+from datetime import datetime
+pd.set_option('display.max_rows', 1000)
+pd.options.display.max_colwidth = 1000
+
+#to send emails
+import email, smtplib, ssl
+from email import encoders
+from email.mime.base import MIMEBase
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+
+#to make the conection with spreadsheets
+import gspread
+from google.oauth2.service_account import Credentials
+
+#for passwords
+import os
+from dotenv import load_dotenv, find_dotenv
+
+
 # # D. p_reporting
 
 # We are going to send the different DataFrames to spreadsheet
