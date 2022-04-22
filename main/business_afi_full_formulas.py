@@ -630,8 +630,6 @@ def product_mean_status_func_apply(df_single):
 df_single = product_mean_status_func_apply(df_single)
 
 
-# ### d) Create the category of each product
-
 # In[33]:
 
 
@@ -658,9 +656,21 @@ def product_category(df_single):
 df_single = product_category(df_single)
 
 
-# ## EXPORT the dataFrames to CSVs
+# ### e) Create a "count" column
 
 # In[35]:
+
+
+def product_count(df_single):
+    df_single["product_count"] = 1
+    return df_single
+
+df_single = product_count(df_single)
+
+
+# ## EXPORT the dataFrames to CSVs
+
+# In[36]:
 
 
 def export_files(df_single, df_append_new_files):
@@ -686,7 +696,7 @@ export
 
 # ### - EMAIL ALERTS
 
-# In[36]:
+# In[37]:
 
 
 def business_afi_email_sender(receiver_email, filename_location, csv_name, body_email, email_key):
@@ -740,7 +750,7 @@ def business_afi_email_sender(receiver_email, filename_location, csv_name, body_
 
 # #### 1) out of stock or discontinued
 
-# In[37]:
+# In[38]:
 
 
 business_afi_email_sender("businessafiliacion@gmail.com","../files/out_of_stock_last_day.csv", "out_of_stock_last_day.csv", "CSV con productos descatalogados o fuera de stock",email_key)
@@ -748,7 +758,7 @@ business_afi_email_sender("businessafiliacion@gmail.com","../files/out_of_stock_
 
 # #### 2) none values
 
-# In[38]:
+# In[39]:
 
 
 def email_none_values(df_single, df_append_new_files,email_key):
@@ -760,7 +770,7 @@ def email_none_values(df_single, df_append_new_files,email_key):
         return "does not exist none values"
 
 
-# In[39]:
+# In[40]:
 
 
 email_none_values(df_single, df_append_new_files,email_key)
@@ -768,13 +778,13 @@ email_none_values(df_single, df_append_new_files,email_key)
 
 # #### 3) send the csv to have a backup
 
-# In[40]:
+# In[41]:
 
 
 business_afi_email_sender("businessafiliacion@gmail.com", "../files/df_single.csv", "df_single.csv", "CSV PRINCIPAL como backup con el dataframe diario con todos los datos en formato csv",email_key)
 
 
-# In[41]:
+# In[42]:
 
 
 business_afi_email_sender("businessafiliacion@gmail.com", "../files/df_append_new_files_last_day.csv", "df_append_new_files_last_day.csv", "CSV CON DATOS DEL DIA como backup con el dataframe diario en formato csv",email_key)
@@ -792,7 +802,7 @@ business_afi_email_sender("businessafiliacion@gmail.com", "../files/df_append_ne
 
 # The conection has been done in the "p_wrangling" module. The output is located in the variable "gc"
 
-# In[42]:
+# In[45]:
 
 
 def update_spreadsheet(gc, spreadsheet_name, worksheet_name, dataframe):
@@ -801,27 +811,27 @@ def update_spreadsheet(gc, spreadsheet_name, worksheet_name, dataframe):
     
     #Clear and Update the Worksheet
     sheet.clear()
-    sheet.update('A1:L1',[dataframe.columns.tolist()])
-    sheet.update('A2:L' + str(len(dataframe)+1), dataframe.values.tolist())
+    sheet.update('A1:M1',[dataframe.columns.tolist()])
+    sheet.update('A2:M' + str(len(dataframe)+1), dataframe.values.tolist())
     
     return "worksheet updated"
 
 
-# In[43]:
+# In[46]:
 
 
 #sheet1 - df_single
 update_spreadsheet(gc, "business_afi_scraping_df_single", "df_single", df_single)
 
 
-# In[44]:
+# In[47]:
 
 
 #sheet2 - df_append_new_files
 update_spreadsheet(gc, "business_afi_scraping_last_day_files", "df_append_new_files", df_append_new_files)
 
 
-# In[45]:
+# In[48]:
 
 
 #sheet3 - out_of_stock_df
@@ -833,7 +843,7 @@ def out_of_stock_spreadsheet(df_append_new_files,gc):
 out_of_stock_spreadsheet(df_append_new_files,gc)
 
 
-# In[46]:
+# In[49]:
 
 
 #sheet4 - none_values_df
@@ -850,19 +860,19 @@ def non_values_spreadsheet(df_single):
 non_values_spreadsheet(df_single)
 
 
-# In[47]:
+# In[50]:
 
 
 #df_single.head()
 
 
-# In[48]:
+# In[51]:
 
 
 #df_single.tail(5)
 
 
-# In[49]:
+# In[52]:
 
 
 #len(df_single)
