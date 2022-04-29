@@ -588,7 +588,10 @@ def product_mean_dic(df_single):
     product_id_list_mean = df_single["product_id"].unique().tolist()
     mean_dic = {}
     for i in product_id_list_mean:
-        mean_dic[i] = int(round(df_single[df_single["product_id"] == i]["price"].mean(),0))
+        if str(df_single[df_single["product_id"] == i].loc[df_single["price"] > 0]["price"].mean()) == "nan":
+            mean_dic[i] = 0
+        else:
+            mean_dic[i] = int(round(df_single[df_single["product_id"] == i].loc[df_single["price"] > 0]["price"].mean(),0))
     return mean_dic
 
 product_mean = product_mean_dic(df_single### b) Clean and Prepare the dataFrame
@@ -843,7 +846,7 @@ business_afi_email_sender("businessafiliacion@gmail.com", "../files/df_append_ne
 
 # The conection has been done in the "p_wrangling" module. The output is located in the variable "gc"
 
-# In[45]:
+# In[43]:
 
 
 def update_spreadsheet(gc, spreadsheet_name, worksheet_name, dataframe):
@@ -858,21 +861,21 @@ def update_spreadsheet(gc, spreadsheet_name, worksheet_name, dataframe):
     return "worksheet updated"
 
 
-# In[46]:
+# In[44]:
 
 
 #sheet1 - df_single
 update_spreadsheet(gc, "business_afi_scraping_df_single", "df_single", df_single)
 
 
-# In[47]:
+# In[45]:
 
 
 #sheet2 - df_append_new_files
 update_spreadsheet(gc, "business_afi_scraping_last_day_files", "df_append_new_files", df_append_new_files)
 
 
-# In[48]:
+# In[46]:
 
 
 #sheet3 - out_of_stock_df
@@ -884,7 +887,7 @@ def out_of_stock_spreadsheet(df_append_new_files,gc):
 out_of_stock_spreadsheet(df_append_new_files,gc)
 
 
-# In[49]:
+# In[47]:
 
 
 #sheet4 - none_values_df
@@ -901,19 +904,19 @@ def non_values_spreadsheet(df_single):
 non_values_spreadsheet(df_single)
 
 
-# In[ ]:
+# In[48]:
 
 
 #df_single.head()
 
 
-# In[ ]:
+# In[49]:
 
 
 #df_single.tail(5)
 
 
-# In[ ]:
+# In[50]:
 
 
 #len(df_single)
