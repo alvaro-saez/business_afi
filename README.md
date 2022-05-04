@@ -102,11 +102,13 @@ The nest libraries are a built-in package for both python2.7 and python3.x, so t
       - Create new columns
       - Limit the the amount of data only to a year to avoid the limits of Spreadsheets and to avoid to have huge CSVs
       - Export the dataFrames to CSVs 
+
     c) _p_analysis:_
       - study the values looking for errors to create alerts via email:
         - out of stock or discontinued products alert
         - none values alert
         - send the CSVs via email to have a backup
+ 
     d) _p_reporting:_
        - send the different dataFrames to spreadsheet:
         - sheet1: MAIN dataFrame
