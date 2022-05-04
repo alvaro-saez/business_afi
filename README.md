@@ -11,11 +11,12 @@ There are two stakeholders who will benefit from this solution:
  - _**USERS**_: 
   1. Amazon uses to change the price or their products with a high frequence, so this proyect aims to create a temporary price chart to embed on the web to improve the user experience and help them make the purchase decision.
   2. Create product alerts with a price lower than the average to warn users of "bargains".
- 
+<p align="center"><img src="https://github.com/alvaro-saez/business_afi/blob/main/imgs/Bargain-3.jpg"></p>
+
  - _**WEB SITE ADMINS**_: 
   3. Create email product alerts about "out of stock" or "discontinued" product status which help the admins to make a decision about keeping the product in production or not.
   4. Create a online database to analyce the product price evolution, make different dashboards and detect errors in the "dataLayer".
-
+<p align="center"><img src="https://github.com/alvaro-saez/business_afi/blob/main/imgs/alert-on-it.gif"></p>
 
 ###  :computer: Technology stack:
 
