@@ -85,12 +85,12 @@ The nest libraries are a built-in package for both python2.7 and python3.x, so t
 1. **PYTHON:**
    a) **_p_acquisition:_**
       - set the URLS for the web scrapping
-      - set the credentials with the passwords to can make the API conexions
+      - set the credentials with the passwords to can make the API connections
       - make the web scrapping
       - create the different datetime formats
 
    b) **_p_wrangling:_**
-      - make the conexion with Google Spreadsheet
+      - make the connection with Google Spreadsheet
       - Create or define the MAIN dataFrame (a single dataframe which will contain all the daily records):
         - From a CSV if it exists
         - If not, from spreadsheets
@@ -115,3 +115,6 @@ The nest libraries are a built-in package for both python2.7 and python3.x, so t
         - sheet2 | worksheet 1: daily scrapped data dataFrame
         - sheet2 | worksheet 2: out of stock or discontinued dataFrame
         - sheet2 | worksheet 3: none values dataFrame
+        
+2. **create spreadsheets and datastudio connection:**
+3. **embed the different charts in wordpress:** 
