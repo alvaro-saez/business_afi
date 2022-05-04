@@ -187,3 +187,6 @@ I have not uploaded my credentials to this repository, it is private information
 
 - **SPREADSHEET & GOOGLE CLOUD:** It is more complicate, but you have to create a proyect in Google cloud, enable the Gdrive an Spreadsheet API and generate a JSON with the credentials
 [step by step help article](https://blog.coupler.io/python-to-google-sheets/)
+
+
+<p align="center"><img src="https://github.com/alvaro-saez/business_afi/blob/main/imgs/istockphoto-1271311350-612x612.jpg"></p>
