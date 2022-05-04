@@ -81,8 +81,8 @@ The nest libraries are a built-in package for both python2.7 and python3.x, so t
 
 
 ### :runner: **STEPS:**
+
 1. **PYTHON:**
-<p align="center"><img src="https://github.com/alvaro-saez/business_afi/blob/main/imgs/1_RQBY0LUv-ItFuhJujhjkUg.png"></p>
    a) **_p_acquisition:_**
       - set the URLS for the web scrapping
       - set the credentials with the passwords to can make the API connections
