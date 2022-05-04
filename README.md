@@ -115,6 +115,7 @@ The nest libraries are a built-in package for both python2.7 and python3.x, so t
         - sheet2 | worksheet 1: daily scrapped data dataFrame
         - sheet2 | worksheet 2: out of stock or discontinued dataFrame
         - sheet2 | worksheet 3: none values dataFrame
+<p align="center"><img src="https://github.com/alvaro-saez/business_afi/blob/main/imgs/kisspng-ipython-jupyter-logo-5aee2bd5e55fe9.1887046215255582299395.jpg"></p>
         
 2. **create spreadsheets and datastudio connection:**
 <p align="center"><img src="https://github.com/alvaro-saez/business_afi/blob/main/imgs/SPREADSHEET.png"></p>
