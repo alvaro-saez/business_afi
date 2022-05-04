@@ -36,3 +36,13 @@ There are two stakeholders who will benefit from this solution:
     ```
     conda install pandas
     ```
+    
+- Install [numpy](https://numpy.org/doc/stable/reference/index.html) library. Copy and paste next command in your master branch:
+    ```
+    conda install numpy
+    ```
+    
+- Install [requests](https://docs.python-requests.org/en/latest/) library. Copy and paste next command in your master branch:
+    ```
+    conda install -c anaconda requests
+    ```
