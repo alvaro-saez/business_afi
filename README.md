@@ -178,3 +178,12 @@ a) **"main" folder**: It contains the file "main_business_afi.py", which has all
 
 a) **"modules" folder**: It contains all the modules individuall. To execute them, you have to run the file "main_modules_business_afi.py"
 <p align="center"><img src="https://github.com/alvaro-saez/business_afi/blob/main/imgs/py2_shell.png"></p>
+
+### :closed_lock_with_key: :key: Limitations
+
+I have not uploaded my credentials to this repository, it is private information, so to can execute this pipeline you have to generate your own credentials:
+- **EMAIL:** You have to create a password-protected app in gmail to have a secure environment in which to make post and get requests.
+[google guide](https://support.google.com/accounts/answer/185833?hl=en)
+
+- **SPREADSHEET & GOOGLE CLOUD:** It is more complicate, but you have to create a proyect in Google cloud, enable the Gdrive an Spreadsheet API and generate a JSON with the credentials
+[step by step help article](https://blog.coupler.io/python-to-google-sheets/)
