@@ -173,5 +173,8 @@ The nest libraries are a built-in package for both python2.7 and python3.x, so t
 
 If you have forked this repository and pull it to locale, you have two options to execute the script:
 
-a) "main" folder: It contains the "main_business_afi.py", which has all the modules together in a single script
-<p align="center"><img src="https://github.com/alvaro-saez/business_afi/blob/main/imgs/work_in_progress_clip_art.jpg"></p>
+a) **"main" folder**: It contains the "main_business_afi.py", which has all the modules together in a single script
+<p align="center"><img src="https://github.com/alvaro-saez/business_afi/blob/main/imgs/py1_shell.png"></p>
+
+a) **"modules" folder**: It contains all the modules individuall. To execute them, you have to run "main_modules_business_afi.py"
+<p align="center"><img src="https://github.com/alvaro-saez/business_afi/blob/main/imgs/py2_shell.png"></p>
