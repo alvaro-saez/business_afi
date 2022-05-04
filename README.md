@@ -120,6 +120,9 @@ The nest libraries are a built-in package for both python2.7 and python3.x, so t
 2. **create spreadsheets and datastudio connection:**
 <p align="center"><img src="https://github.com/alvaro-saez/business_afi/blob/main/imgs/SPREADSHEET.png"></p>
 
+3. **create every charts (46 charts, one per product):**
+<p align="center"><img src="https://github.com/alvaro-saez/business_afi/blob/main/imgs/74pZ.gif"></p>
+
 4. **embed the different charts in wordpress:**
 - a chart with the evolution of the prices in a 7 days window:
 <p align="center"><img src="https://github.com/alvaro-saez/business_afi/blob/main/imgs/graf_7.png"></p>
