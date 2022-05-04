@@ -124,7 +124,8 @@ The nest libraries are a built-in package for both python2.7 and python3.x, so t
 <p align="center"><img src="https://github.com/alvaro-saez/business_afi/blob/main/imgs/graf_7.png"></p>
 
 - a chart with the evolution of the prices in a 30 days window:
-<p align="center"><img src="https://github.com/alvaro-saez/business_afi/blob/main/imgs/graf_30.png"></p>
+<p align="center"><img src="https://github.com/alvaro-saez/business_afi/blob/main/imgs/graf_31.png"></p>
 
 - _NEXT STEP_ --> a chart with the evolution of the prices in a whole year window
+<p align="center"><img src="https://github.com/alvaro-saez/business_afi/blob/main/imgs/Work-in-progress.png"></p>
  
