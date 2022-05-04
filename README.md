@@ -89,6 +89,27 @@ The nest libraries are a built-in package for both python2.7 and python3.x, so t
       - make the web scrapping
       - create the different datetime formats
 
-   b) p_wrangling
-
-
+   b) _p_wrangling:_
+      - make the conexion with Google Spreadsheet
+      - Create or define the MAIN dataFrame (a single dataframe which will contain all the daily records):
+        - From a CSV if it exists
+        - If not, from spreadsheets
+        - If not, from this notebook
+        - If not, we have to create a empty dataFrame
+      - Create a second dataFrame with only the daily scrapped data (each day will replace the previous day's data)
+      - Append the daily scrapped data into the Main dataFrame
+      - Clean and Prepare the Main dataFrame
+      - Create new columns
+      - Limit the the amount of data only to a year to avoid the limits of Spreadsheets and to avoid to have huge CSVs
+      - Export the dataFrames to CSVs 
+    c) _p_analysis:_
+      - study the values looking for errors to create alerts via email:
+        - out of stock or discontinued products alert
+        - none values alert
+        - send the CSVs via email to have a backup
+    d) _p_reporting:_
+       - send the different dataFrames to spreadsheet:
+        - sheet1: MAIN dataFrame
+        - sheet2 | worksheet 1: daily scrapped data dataFrame
+        - sheet2 | worksheet 2: out of stock or discontinued dataFrame
+        - sheet2 | worksheet 3: none values dataFrame
