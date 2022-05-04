@@ -134,4 +134,36 @@ The nest libraries are a built-in package for both python2.7 and python3.x, so t
 
 - _NEXT STEP_ --> a chart with the evolution of the prices in a whole year window
 <p align="center"><img src="https://github.com/alvaro-saez/business_afi/blob/main/imgs/work_in_progress_clip_art.jpg"></p>
- 
+
+### :file_folder: **Folder structure**
+```
+└── project
+    ├── .git
+    │ 
+    ├── .gitignore
+    │ 
+    ├── README.md
+    │ 
+    ├── credentials
+    │    ├── di.env
+    │    └── credentials.json
+    │ 
+    ├── files
+    │    ├── df_append_new_files_last_day.csv
+    │    ├── df_single.csv
+    │    └── out_of_stock_last_day.csv  
+    │  
+    ├── imgs
+    │    
+    ├── main
+    │    ├── business_afi_full_formulas.ipynb
+    │    └── business_afi_full_formulas.py
+    │    
+    └── modules
+         ├── p_acquisition.py
+         ├── p_wrangling.py       
+         ├── p_analysis.py
+         ├── p_reporting.py       
+         └── main_business_afi.py
+
+  ```
