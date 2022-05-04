@@ -80,3 +80,15 @@ The nest libraries are a built-in package for both python2.7 and python3.x, so t
 - Import [os](https://docs.python.org/3/library/os.html) library.
 
 
+### :runner: **STEPS:**
+
+1. **PYTHON:**
+   a) _p_acquisition:_
+      - set the URLS for the web scrapping
+      - set the credentials with the passwords to can make the API conexions
+      - make the web scrapping
+      - create the different datetime formats
+
+   b) p_wrangling
+
+
