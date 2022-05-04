@@ -65,6 +65,12 @@ There are two stakeholders who will benefit from this solution:
     ```
     conda install -c conda-forge gspread
     ```
+   
+- Install [dotenv](https://pypi.org/project/python-dotenv/) library. Copy and paste next command in your master branch:
+    ```
+    conda install -c conda-forge python-dotenv
+
+    ```
  
 _**LIBRARIES WITHOUT A MANUAL INSTALLATION:**_
 
