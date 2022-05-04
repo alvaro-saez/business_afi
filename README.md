@@ -46,3 +46,32 @@ There are two stakeholders who will benefit from this solution:
     ```
     conda install -c anaconda requests
     ```
+    
+- Install [bs4](https://pypi.org/project/beautifulsoup4/) library. Copy and paste next command in your master branch:
+    ```
+    conda install -c anaconda beautifulsoup4
+    ```
+    
+- Install [re](https://docs.python.org/3/library/re.html) library. Copy and paste next command in your master branch:
+    ```
+    conda install -c conda-forge regex
+    ```
+- Install [datetime](https://docs.python.org/3/library/datetime.html) library. Copy and paste next command in your master branch:
+    ```
+    conda install -c trentonoliphant datetime
+    ```
+
+- Install [gspread](https://docs.gspread.org/en/latest/) library. Copy and paste next command in your master branch:
+    ```
+    conda install -c conda-forge gspread
+    ```
+ 
+_**LIBRARIES WITHOUT A MANUAL INSTALLATION:**_
+
+The nest libraries are a built-in package for both python2.7 and python3.x, so there is no need for installation. You can import them without installing any other package.
+
+- Import [email, smtplib, ssl](https://docs.python.org/es/3/library/email.examples.html) library.
+
+- Import [os](https://docs.python.org/3/library/os.html) library.
+
+
