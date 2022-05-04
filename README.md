@@ -117,4 +117,14 @@ The nest libraries are a built-in package for both python2.7 and python3.x, so t
         - sheet2 | worksheet 3: none values dataFrame
         
 2. **create spreadsheets and datastudio connection:**
-3. **embed the different charts in wordpress:** 
+<p align="center"><img src="https://github.com/alvaro-saez/business_afi/blob/main/imgs/SPREADSHEET.png"></p>
+
+4. **embed the different charts in wordpress:**
+- a chart with the evolution of the prices in a 7 days window:
+<p align="center"><img src="https://github.com/alvaro-saez/business_afi/blob/main/imgs/graf_7.png"></p>
+
+- a chart with the evolution of the prices in a 30 days window:
+<p align="center"><img src="https://github.com/alvaro-saez/business_afi/blob/main/imgs/graf_30.png"></p>
+
+- _NEXT STEP_ --> a chart with the evolution of the prices in a whole year window
+ 
