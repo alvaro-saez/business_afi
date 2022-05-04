@@ -17,7 +17,7 @@ There are two stakeholders who will benefit from this solution:
   4. Create a online database to analyce the product price evolution, make different dashboards and detect errors in the "dataLayer".
 
 
-###  :computer: Technology stack
+###  :computer: Technology stack:
 
 - _**Python**_: as a language to develop a script that does **web scraping**, **cleans** and **prepares** the data and **communicates** via API with the different tools.
 - _**Online Server**_: to **allocate** the scripts and CSVs and to automate its **daily execution**.
@@ -25,3 +25,14 @@ There are two stakeholders who will benefit from this solution:
 - _**Gmail**:_ to send **alerts** and to have a **daily backup** of the resulting csv.
 - _**Datastudio**_: as a **dashboarding tool** to create a temporary price graph which will be embeded into the web site.
 - _**Wordpress**_: as a **content management system**.
+
+
+### :books: **Dependencies:**
+
+- _ADVISE:_ Create a virtual environment with the version of Python you're going to use and the different libraries.
+- This repository is tested on **Python 3.7+**.
+
+- Install [pandas](https://pandas.pydata.org/docs/user_guide/index.html) library. Copy and paste next command in your master branch:
+    ```
+    conda install pandas
+    ```
