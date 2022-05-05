@@ -23,7 +23,7 @@ There are two stakeholders who will benefit from this solution:
 
 - _**Python**_: as a language to develop a script that does **web scraping**, **cleans** and **prepares** the data and **communicates** via API with the different tools.
 - _**Filezilla**_: as a **FTP** to upload the files (all the repo as gihub).
-- _**LAMP Server & CRON process**_: to **allocate** the scripts and CSVs and to automate its **daily execution**.
+- _**LAMP ("Linux", "Apache", "MySQL" y "PHP") Server & CRON process**_: to **allocate** the scripts and CSVs and to automate its **daily execution** 
 - _**Spreadsheets**_: to upload the different dataframes resulting from the python script and also to be the **main data source** of the BI tool.
 - _**Gmail**:_ to send **alerts** and to have a **daily backup** of the resulting csv.
 - _**Datastudio**_: as a **dashboarding tool** to create a temporary price graph which will be embeded into the web site.
