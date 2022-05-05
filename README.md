@@ -137,6 +137,13 @@ The nest libraries are a built-in package for both python2.7 and python3.x, so t
 - _NEXT STEP_ --> a chart with the evolution of the prices in a whole year window
 <p align="center"><img src="https://github.com/alvaro-saez/business_afi/blob/main/imgs/work_in_progress_clip_art.jpg"></p>
 
+5. **Upload files to LAMP Server and automate the script execution**
+- _**Filezilla**_
+<p align="center"><img src="https://github.com/alvaro-saez/business_afi/blob/main/imgs/filezila.png"></p>
+
+- _**CRON process**_
+<p align="center"><img src="https://github.com/alvaro-saez/business_afi/blob/main/imgs/automat_all.png"></p>
+
 ### :file_folder: **Folder structure**
 ```
 └── project
