@@ -92,9 +92,10 @@ The nest libraries are a built-in package for both python2.7 and python3.x, so t
       - set the credentials with the passwords to can make the API connections
       - make the web scrapping
       - create the different datetime formats
+      - make the connection with Google Spreadsheet
 
    b) **_p_wrangling:_**
-      - make the connection with Google Spreadsheet
+
       - Create or define the MAIN dataFrame (a single dataframe which will contain all the daily records):
         - From a CSV if it exists
         - If not, from spreadsheets
