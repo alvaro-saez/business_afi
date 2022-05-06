@@ -398,7 +398,11 @@ def product_date_number(urls_products_list):
 final_date_number_products = product_date_number(urls_products_list)
 
 
-# ### Spreadsheet connection
+# # B. p_wrangling
+
+# ## Create the DATAFRAME
+
+# ### a) Full DataFrame with a daily injection of the new scraped data
 
 # In[23]:
 
@@ -420,12 +424,6 @@ gc = conection_spreadsheet(["https://spreadsheets.google.com/feeds",
          "https://www.googleapis.com/auth/drive.file",
          "https://www.googleapis.com/auth/drive"], '../credentials/credentials.json')
 
-
-# # B. p_wrangling
-
-# ## Create the DATAFRAME
-
-# ### a) Full DataFrame with a daily injection of the new scraped data
 
 # #### Step 1: Create or define the dataFrame
 # 
@@ -730,8 +728,6 @@ def acotar_df_un_ano(df_single):
 df_single = acotar_df_un_ano(df_single)
 
 
-# # C. p_analysis
-
 # ## EXPORT the dataFrames to CSVs
 
 # In[37]:
@@ -754,9 +750,11 @@ export = export_files(df_single, df_append_new_files)
 export
 
 
-# ### - EMAIL ALERTS
+# # C. p_analysis
 
 # We are going to study the values looking for errors to create alerts via email
+
+# ### - EMAIL ALERTS
 
 # In[38]:
 
