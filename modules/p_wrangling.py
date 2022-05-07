@@ -198,22 +198,60 @@ def correction_df_single(df_single):
 
 # ### c) Create the price main of each product
 
-# In[29]:
+# In[ ]:
 
 
+#product mean (TOTAL DAYS)
 def product_mean_dic(df_single):
     product_id_list_mean = df_single["product_id"].unique().tolist()
     mean_dic = {}
     for i in product_id_list_mean:
-        mean_dic[i] = int(round(df_single[df_single["product_id"] == i]["price"].mean(),0))
+        if str(df_single[df_single["product_id"] == i].loc[df_single["price"] > 0]["price"].mean()) == "nan":
+            mean_dic[i] = 0
+        else:
+            mean_dic[i] = int(round(df_single[df_single["product_id"] == i].loc[df_single["price"] > 0]["price"].mean(),0))
     return mean_dic
 
 
-# In[30]:
+#product mean (LAST 7 DAYS)
+def product_mean_dic7(df_single):
+    product_id_list_mean7 = df_single["product_id"].unique().tolist()
+    mean_dic7 = {}
+    for i in product_id_list_mean7:
+        if str(df_single[df_single["product_id"] == i].iloc[-7:].loc[df_single["price"] > 0]["price"].mean()) == "nan":
+            mean_dic7[i] = 0
+        else:
+            mean_dic7[i] = int(round(df_single[df_single["product_id"] == i].iloc[-7:].loc[df_single["price"] > 0]["price"].mean(),0))
+    return mean_dic7
+
+
+#product mean (LAST 30 DAYS)
+def product_mean_dic30(df_single):
+    product_id_list_mean30 = df_single["product_id"].unique().tolist()
+    mean_dic30 = {}
+    for i in product_id_list_mean30:
+        if str(df_single[df_single["product_id"] == i].iloc[-30:].loc[df_single["price"] > 0]["price"].mean()) == "nan":
+            mean_dic30[i] = 0
+        else:
+            mean_dic30[i] = int(round(df_single[df_single["product_id"] == i].iloc[-30:].loc[df_single["price"] > 0]["price"].mean(),0))
+    return mean_dic30
+
+
+# In[ ]:
 
 
 def product_mean_dic_to_df(df_single,product_mean):
     df_single["product_mean"] = df_single["product_id"].apply(lambda x: product_mean[x])
+    return df_single
+
+
+def product_mean_dic_to_df7(df_single,product_mean7):
+    df_single["product_mean7"] = df_single["product_id"].apply(lambda x: product_mean7[x])
+    return df_single
+
+
+def product_mean_dic_to_df30(df_single,product_mean30):
+    df_single["product_mean30"] = df_single["product_id"].apply(lambda x: product_mean30[x])
     return df_single
 
 
@@ -265,6 +303,26 @@ def categories_url(product_url):
 def product_category(df_single):
     df_single["product_category"] = df_single["url"].apply(categories_url)
     return df_single
+
+
+# In[ ]:
+
+
+def product_count(df_single):
+    df_single["product_count"] = 1
+    return df_single
+
+
+# In[ ]:
+
+
+def acotar_df_un_ano(df_single):
+    if len(np.sort(df_single["date_number"].unique())) > 366:
+        df_single = df_single[df_single["date_number"] > np.sort(df_single["date_number"].unique())[-366]]
+        return df_single
+    else:
+        df_single = df_single
+        return df_single
 
 
 # ## EXPORT the dataFrames to CSVs

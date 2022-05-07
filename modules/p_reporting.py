@@ -41,7 +41,7 @@ from dotenv import load_dotenv, find_dotenv
 
 # The conection has been done in the "p_wrangling" module. The output is located in the variable "gc"
 
-# In[74]:
+# In[ ]:
 
 
 def update_spreadsheet(gc, spreadsheet_name, worksheet_name, dataframe):
@@ -50,8 +50,8 @@ def update_spreadsheet(gc, spreadsheet_name, worksheet_name, dataframe):
     
     #Clear and Update the Worksheet
     sheet.clear()
-    sheet.update('A1:L1',[dataframe.columns.tolist()])
-    sheet.update('A2:L' + str(len(dataframe)+1), dataframe.values.tolist())
+    sheet.update('A1:O1',[dataframe.columns.tolist()])
+    sheet.update('A2:O' + str(len(dataframe)+1), dataframe.values.tolist())
     
     return "worksheet updated"
 
