@@ -16,7 +16,7 @@ There are two stakeholders who will benefit from this solution:
 
  - _**WEB SITE ADMINS**_: 
   3. Create **email product alerts** about **"out of stock"** or **"discontinued"** product status which help the admins to make a decision about keeping the product in production or not.
-  4. Create a **online database** to analyce the product price evolution, make different dashboards and detect errors in the "dataLayer".
+  4. Create a **online database** to analyze the product price evolution, make different dashboards and detect errors in the "dataLayer".
 <p align="center"><img src="https://github.com/alvaro-saez/business_afi/blob/main/imgs/alert-on-it.gif"></p>
 
 ###  :computer: Technology stack:
@@ -185,12 +185,12 @@ If you have forked this repository and pull it to locale, you have two options t
 a) **"main" folder**: It contains the file "main_business_afi.py", which has all the modules together in a single script
 <p align="center"><img src="https://github.com/alvaro-saez/business_afi/blob/main/imgs/py1_shell.png"></p>
 
-a) **"modules" folder**: It contains all the modules individuall. To execute them, you have to run the file "main_modules_business_afi.py"
+a) **"modules" folder**: It contains all the modules individually. To execute them, you have to run the file "main_modules_business_afi.py"
 <p align="center"><img src="https://github.com/alvaro-saez/business_afi/blob/main/imgs/py2_shell.png"></p>
 
 ### :closed_lock_with_key: :key: Limitations
 
-I have not uploaded my credentials to this repository, it is private information, so to can execute this pipeline you have to generate your own credentials:
+I have not uploaded my credentials to this repository, it is private information, so to execute this pipeline you have to generate your own credentials:
 - **EMAIL:** You have to create a password-protected app in gmail to have a secure environment in which to make post and get requests.
 [google guide](https://support.google.com/accounts/answer/185833?hl=en)
 
