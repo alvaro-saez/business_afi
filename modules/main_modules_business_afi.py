@@ -80,9 +80,15 @@ if __name__ == "__main__":
         df_single = wr.concat_df(df_single,df_append_new_files)
         df_single = wr.correction_df_single(df_single)
         product_mean = wr.product_mean_dic(df_single)### b) Clean and Prepare the dataFrame
+        product_mean7 = wr.product_mean_dic7(df_single)### b) Clean and Prepare the dataFrame
+        product_mean30 = wr.product_mean_dic30(df_single)### b) Clean and Prepare the dataFrame
         df_single = wr.product_mean_dic_to_df(df_single,product_mean)
+        df_single = wr.product_mean_dic_to_df7(df_single,product_mean7)
+        df_single = wr.product_mean_dic_to_df30(df_single,product_mean30)
+        df_single = wr.product_count(df_single)
         df_single = wr.product_mean_status_func_apply(df_single)
         df_single = wr.product_category(df_single)
+        df_single = wr.acotar_df_un_ano(df_single)
         export = wr.export_files(df_single, df_append_new_files)
         
         #p_analysis
