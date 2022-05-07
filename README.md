@@ -10,13 +10,13 @@ www.sillasybienestar.com is a website which advises users about how to buy the b
 There are two stakeholders who will benefit from this solution:
 
  - _**USERS**_: 
-  1. Amazon uses to change the price or their products with a high frequence, so this proyect aims to create a **temporary price chart** to embed on the web to improve the user experience and **help** them make the **purchase decision**.
+  1. Amazon uses to change the price of their products with a high frequency, so this project aims to create a **temporary price chart** to embed on the web to improve the user experience and **help** them make the **purchase decision**.
   2. Create **product alerts** with a **price lower** than the average to warn users of **"bargains"**.
 <p align="center"><img src="https://github.com/alvaro-saez/business_afi/blob/main/imgs/Bargain-3.jpg"></p>
 
  - _**WEB SITE ADMINS**_: 
   3. Create **email product alerts** about **"out of stock"** or **"discontinued"** product status which help the admins to make a decision about keeping the product in production or not.
-  4. Create a **online database** to analyze the product price evolution, make different dashboards and detect errors in the "dataLayer".
+  4. Create an **online database** to analyze the product price evolution, make different dashboards and detect errors in the "dataLayer".
 <p align="center"><img src="https://github.com/alvaro-saez/business_afi/blob/main/imgs/alert-on-it.gif"></p>
 
 ###  :computer: Technology stack:
@@ -26,7 +26,7 @@ There are two stakeholders who will benefit from this solution:
 - _**LAMP ("Linux", "Apache", "MySQL" y "PHP") Server & CRON process**_: to **allocate** the scripts and CSVs and to automate its **daily execution** 
 - _**Spreadsheets**_: to upload the different dataframes resulting from the python script and also to be the **main data source** of the BI tool.
 - _**Gmail**:_ to send **alerts** and to have a **daily backup** of the resulting csv.
-- _**Datastudio**_: as a **dashboarding tool** to create a temporary price graph which will be embeded into the web site.
+- _**Datastudio**_: as a **dashboarding tool** to create a temporary price graph which will be embedded into the web site.
 - _**Wordpress**_: as a **content management system**.
 
 
@@ -76,7 +76,7 @@ There are two stakeholders who will benefit from this solution:
  
 _**LIBRARIES WITHOUT A MANUAL INSTALLATION:**_
 
-The nest libraries are a built-in package for both python2.7 and python3.x, so there is no need for installation. You can import them without installing any other package.
+The next libraries are a built-in package for both python2.7 and python3.x, so there is no need for installation. You can import them without installing any other package.
 
 - Import [email, smtplib, ssl](https://docs.python.org/es/3/library/email.examples.html) library.
 
@@ -88,9 +88,9 @@ The nest libraries are a built-in package for both python2.7 and python3.x, so t
 1. **PYTHON:**
 
    a) **_p_acquisition:_**
-      - set the URLS for the web scrapping
+      - set the URLS for the web scraping
       - set the credentials with the passwords to can make the API connections
-      - make the web scrapping
+      - make the web scraping
       - create the different datetime formats
       - make the connection with Google Spreadsheet
 
@@ -194,7 +194,7 @@ I have not uploaded my credentials to this repository, it is private information
 - **EMAIL:** You have to create a password-protected app in gmail to have a secure environment in which to make post and get requests.
 [google guide](https://support.google.com/accounts/answer/185833?hl=en)
 
-- **SPREADSHEET & GOOGLE CLOUD:** It is more complicate, but you have to create a proyect in Google cloud, enable the Gdrive an Spreadsheet API and generate a JSON with the credentials
+- **SPREADSHEET & GOOGLE CLOUD:** It is more complicate, but you have to create a project in Google cloud, enable the Gdrive an Spreadsheet API and generate a JSON with the credentials
 [step by step help article](https://blog.coupler.io/python-to-google-sheets/)
 
 ### :gift: ONLINE PRESENTATION
