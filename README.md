@@ -22,7 +22,7 @@ There are two stakeholders who will benefit from this solution:
 ###  :computer: Technology stack:
 
 - _**Python**_: as a language to develop a script that does **web scraping**, **cleans** and **prepares** the data and **communicates** via API with the different tools.
-- _**Filezilla**_: is a free and open source FTP/SFTP application that consists of a client and a server and allows you to upload files from local to your server. I have uploaded all the files (all the repo as gihub).
+- _**Filezilla**_: is a free and open source FTP/SFTP application that consists of a client and a server and allows you to upload files from local to your server. I have uploaded all the files (all the repo as github).
 - _**LAMP ("Linux", "Apache", "MySQL" y "PHP") Server & CRON process**_: to **allocate** the scripts and CSVs and to automate its **daily execution** 
 - _**Spreadsheets**_: to upload the different dataframes resulting from the python script and also to be the **main data source** of the BI tool.
 - _**Gmail**:_ to send **alerts** and to have a **daily backup** of the resulting csv.
@@ -101,8 +101,8 @@ The next libraries are a built-in package for both python2.7 and python3.x, so t
         - If not, from spreadsheets
         - If not, from this notebook
         - If not, we have to create a empty dataFrame
-      - Create a second dataFrame with only the daily scrapped data (each day will replace the previous day's data)
-      - Append the daily scrapped data into the Main dataFrame
+      - Create a second dataFrame with only the daily scraped data (each day will replace the previous day's data)
+      - Append the daily scraped data into the Main dataFrame
       - Clean and Prepare the Main dataFrame
       - Create new columns
       - Limit the the amount of data only to a year to avoid the limits of Spreadsheets and to avoid to have huge CSVs
