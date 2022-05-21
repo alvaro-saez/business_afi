@@ -40,135 +40,59 @@ load_dotenv(find_dotenv("../credentials/.env"))
 email_key = os.environ.get("EMAIL_KEY") #EMAIL PASSWORD
 
 
-# ### SET THE URLS IN VARIABLES
+# ### Spreadsheet connection
 
 # In[3]:
 
 
-urls_ergonomia = [
-"https://sillasybienestar.com/ergonomia/sillas-ergonomicas/review-individual/tlv-myx-801-1/",
-"https://sillasybienestar.com/ergonomia/sillas-ergonomicas/review-individual/songmics-obn55bk/",
-"https://sillasybienestar.com/ergonomia/sillas-ergonomicas/review-individual/cashoffice-silla-ergonomica/",
-"https://sillasybienestar.com/ergonomia/sillas-ergonomicas/review-individual/cedric/",
-"https://sillasybienestar.com/ergonomia/sillas-ergonomicas/review-individual/noblewell/",
-"https://sillasybienestar.com/ergonomia/sillas-ergonomicas/review-individual/sihoo-lb14/",
-"https://sillasybienestar.com/ergonomia/sillas-ergonomicas/review-individual/ronda-silla-espanola/",
-"https://sillasybienestar.com/ergonomia/sillas-ergonomicas/review-individual/diablo-v-master/",
-"https://sillasybienestar.com/ergonomia/sillas-ergonomicas/review-individual/diablo-v-basic/",
-"https://sillasybienestar.com/ergonomia/sillas-ergonomicas/review-individual/songmics-obn61bkv1/",
-"https://sillasybienestar.com/ergonomia/sillas-ergonomicas/review-individual/hbada-reposapies/",
-"https://sillasybienestar.com/ergonomia/sillas-ergonomicas/review-individual/songmics-obn86bk/",
-"https://sillasybienestar.com/ergonomia/sillas-ergonomicas/review-individual/femor/",
-"https://sillasybienestar.com/ergonomia/sillas-ergonomicas/review-individual/hbada-reposabrazos/",
-"https://sillasybienestar.com/ergonomia/sillas-ergonomicas/review-individual/mfavour/",
-"https://sillasybienestar.com/ergonomia/sillas-ergonomicas/review-individual/umi/"   
-]
+def conection_spreadsheet(scopes, credentials_location):
+    scopes = scopes
+    credentials = Credentials.from_service_account_file(
+        credentials_location,
+        scopes=scopes
+    )
+    gc = gspread.authorize(credentials)
+    #If we want to host our credentials in a server we have to do the next code:
+    # gc = gspread.service_account(filename='https://www.path/to/the/downloaded/file.json')
+    print("spreadsheet conection done")
+    return gc
 
+gc = conection_spreadsheet(["https://spreadsheets.google.com/feeds",
+         'https://www.googleapis.com/auth/spreadsheets',
+         "https://www.googleapis.com/auth/drive.file",
+         "https://www.googleapis.com/auth/drive"], '../credentials/credentials.json')
+
+
+# ### SET THE URLS IN VARIABLES
 
 # In[4]:
 
 
-#If want to add a new URL to the "ergonomia" category
-def new_url_ergo(new_url):
-    urls_ergonomia.append(new_url)
-    return "new url 'ergonomia' added"
-
-
-# In[5]:
-
-
-urls_oficina = [
-"https://sillasybienestar.com/oficina-y-escritorio/sillas-de-oficina/review-individual/songmics-obn52bk/",
-"https://sillasybienestar.com/oficina-y-escritorio/sillas-de-oficina/review-individual/songmics-obn22bk/",
-"https://sillasybienestar.com/oficina-y-escritorio/sillas-de-oficina/review-individual/allguest-cedric/",
-"https://sillasybienestar.com/oficina-y-escritorio/sillas-de-oficina/review-individual/hbada-hdny108bm-eu/",
-"https://sillasybienestar.com/oficina-y-escritorio/sillas-de-oficina/review-individual/intimate-wm-heart-sillon-b07x8tqh96/",
-"https://sillasybienestar.com/oficina-y-escritorio/sillas-de-oficina/review-individual/vinsetto-sillon-de-oficina-azul-claro/",
-"https://sillasybienestar.com/oficina-y-escritorio/sillas-de-oficina/review-individual/exofcer-mc6310/",
-"https://sillasybienestar.com/oficina-y-escritorio/sillas-de-oficina/review-individual/songmics-obg24b/"
-]
-
-
-# In[6]:
-
-
-#If want to add a new URL to the "oficina" category
-def new_url_oficina(new_url):
-    urls_oficina.append(new_url)
-    return "new url 'oficina' added"
-
-
-# In[7]:
-
-
-urls_rodilla = [
-"https://sillasybienestar.com/ergonomia/sillas-de-rodillas/review-individual/duehome/",
-"https://sillasybienestar.com/ergonomia/sillas-de-rodillas/review-individual/himimi-silla-de-rodillas/",
-"https://sillasybienestar.com/ergonomia/sillas-de-rodillas/review-individual/varier/",
-"https://sillasybienestar.com/ergonomia/sillas-de-rodillas/review-individual/cinius/"
-]
-
-
-# In[8]:
-
-
-#If want to add a new URL to the "rodilla" category
-def new_url_rodilla(new_url):
-    urls_rodilla.append(new_url)
-    return "new url 'rodilla' added"
-
-
-# In[9]:
-
-
-urls_gaming = [
-"https://sillasybienestar.com/gaming/sillas-gaming/review-individual/gtplayer-rosa/",
-"https://sillasybienestar.com/gaming/sillas-gaming/review-individual/diablo-x-gamer-2-0/",
-"https://sillasybienestar.com/gaming/sillas-gaming/review-individual/intimate-wm-heart-silla-gamer-barata/",
-"https://sillasybienestar.com/gaming/sillas-gaming/review-individual/nokaxus-yk-6008-rosa/",
-"https://sillasybienestar.com/gaming/sillas-gaming/review-individual/newskill-nayuki/",
-"https://sillasybienestar.com/gaming/sillas-gaming/review-individual/silla-gamer-bgeu-a136-sencillez-y-buen-precio-ofertas-2021/",
-"https://sillasybienestar.com/gaming/sillas-gaming/review-individual/autofull-pink-bunny/",
-"https://sillasybienestar.com/gaming/sillas-gaming/review-individual/adec-drw/",
-"https://sillasybienestar.com/gaming/sillas-gaming/review-individual/femor-gaming/",
-"https://sillasybienestar.com/gaming/sillas-gaming/review-individual/hbada-gaming-hdjy001bmj-cb/",
-"https://sillasybienestar.com/gaming/sillas-gaming/review-individual/intimate-wm-heart-gaming/",
-"https://sillasybienestar.com/gaming/sillas-gaming/review-individual/corsair-t3-rush/",
-"https://sillasybienestar.com/gaming/sillas-gaming/review-individual/dxracer-king-ks06/",
-"https://sillasybienestar.com/gaming/sillas-gaming/review-individual/diablo-x-horn/",
-"https://sillasybienestar.com/gaming/sillas-gaming/review-individual/diablo-x-ray/",
-"https://sillasybienestar.com/gaming/sillas-gaming/review-individual/dxracer-formula-f08/",
-"https://sillasybienestar.com/gaming/sillas-gaming/review-individual/newskill-kitsune/",
-"https://sillasybienestar.com/gaming/sillas-gaming/review-individual/newskill-takamikura/"
-#"https://sillasybienestar.com/gaming/sillas-gaming/review-individual/songmics-racing/" - no usamos
-]
-
-
-# In[10]:
-
-
-#If want to add a new URL to the "gaming" category
-def new_url_gaming(new_url):
-    urls_gaming.append(new_url)
-    return "new url 'gaming' added"
-
-
-# In[11]:
-
-
 #JOIN all the urls
-def full_urls(urls_ergonomia, urls_oficina, urls_rodilla, urls_gaming):
+def full_urls(gc):
+    sheet_erg = gc.open("business_afi_scraping_df_single").worksheet("urls_ergonomia")
+    urls_ergonomia = sheet_erg.col_values(1)  #Obtener todos los registros
+
+    sheet_ofi = gc.open("business_afi_scraping_df_single").worksheet("urls_oficina")
+    urls_oficina = sheet_ofi.col_values(1)  #Obtener todos los registros
+
+    sheet_rod = gc.open("business_afi_scraping_df_single").worksheet("urls_rodilla")
+    urls_rodilla = sheet_rod.col_values(1)  #Obtener todos los registros
+
+    sheet_gm = gc.open("business_afi_scraping_df_single").worksheet("urls_gaming")
+    urls_gaming = sheet_gm.col_values(1)  #Obtener todos los registros
+    
     urls_products_list_list = urls_ergonomia + urls_oficina + urls_rodilla + urls_gaming
     return urls_products_list_list
     
-urls_products_list = full_urls(urls_ergonomia, urls_oficina, urls_rodilla, urls_gaming)
+urls_products_list = full_urls(gc)
 
 
 # ### web scrapping
 
 # Obtain the HTML of all our URLs
 
-# In[12]:
+# In[5]:
 
 
 def parsed_content(urls_products_list):
@@ -180,7 +104,7 @@ parsed_products_content_list = parsed_content(urls_products_list)
 
 # Obtain the price info of its class
 
-# In[13]:
+# In[6]:
 
 
 def parsed_price_class(parsed_products_content_list):
@@ -192,7 +116,7 @@ parsed_products_price_class = parsed_price_class(parsed_products_content_list)
 
 # Obtain the final price
 
-# In[14]:
+# In[7]:
 
 
 def product_price(parsed_products_content_list,urls_products_list):
@@ -227,7 +151,7 @@ final_price_products_list = product_price(parsed_products_content_list,urls_prod
 
 # Obtain if the product is out of stock or discontinued
 
-# In[15]:
+# In[8]:
 
 
 def product_status(parsed_products_content_list,urls_products_list):
@@ -258,7 +182,7 @@ final_price_products_status = product_status(parsed_products_content_list,urls_p
 
 # Create a function to handle possible erros in the product information
 
-# In[16]:
+# In[9]:
 
 
 def handling_error_vars_product(i,text):
@@ -272,7 +196,7 @@ def handling_error_vars_product(i,text):
 
 # Obtain the NAME of the different products
 
-# In[17]:
+# In[10]:
 
 
 def product_name(parsed_products_content_list):
@@ -293,7 +217,7 @@ final_name_products = product_name(parsed_products_content_list)
 
 # Obtain the ID of the different products
 
-# In[18]:
+# In[11]:
 
 
 def product_id(parsed_products_content_list):
@@ -314,7 +238,7 @@ final_id_products = product_id(parsed_products_content_list)
 
 # Obtain the BRAND of the different products
 
-# In[19]:
+# In[12]:
 
 
 def product_brand(parsed_products_content_list):
@@ -337,7 +261,7 @@ final_brand_products = product_brand(parsed_products_content_list)
 
 # 1. With HYPHEN. Ex: 2022-04-14
 
-# In[20]:
+# In[13]:
 
 
 def product_date_hyphen(urls_products_list):
@@ -358,7 +282,7 @@ final_date_hyphen_products = product_date_hyphen(urls_products_list)
 
 # 2. With SLASH. Ex: 2022/04/14
 
-# In[21]:
+# In[14]:
 
 
 def product_date_slash(urls_products_list):
@@ -379,7 +303,7 @@ final_date_slash_products = product_date_slash(urls_products_list)
 
 # 3. Without symbols. Ex: 20220414
 
-# In[22]:
+# In[15]:
 
 
 def product_date_number(urls_products_list):
@@ -404,27 +328,6 @@ final_date_number_products = product_date_number(urls_products_list)
 
 # ### a) Full DataFrame with a daily injection of the new scraped data
 
-# In[23]:
-
-
-def conection_spreadsheet(scopes, credentials_location):
-    scopes = scopes
-    credentials = Credentials.from_service_account_file(
-        credentials_location,
-        scopes=scopes
-    )
-    gc = gspread.authorize(credentials)
-    #If we want to host our credentials in a server we have to do the next code:
-    # gc = gspread.service_account(filename='https://www.path/to/the/downloaded/file.json')
-    print("spreadsheet conection done")
-    return gc
-
-gc = conection_spreadsheet(["https://spreadsheets.google.com/feeds",
-         'https://www.googleapis.com/auth/spreadsheets',
-         "https://www.googleapis.com/auth/drive.file",
-         "https://www.googleapis.com/auth/drive"], '../credentials/credentials.json')
-
-
 # #### Step 1: Create or define the dataFrame
 # 
 #  - From a CSV if it exists
@@ -432,18 +335,12 @@ gc = conection_spreadsheet(["https://spreadsheets.google.com/feeds",
 #  - If not, from this notebook
 #  - If not, we have to create a empty dataFrame
 
-# In[24]:
+# In[16]:
 
 
 def main_df(location,gc):
-#1. From a CSV if it exists
-    try:
-        df_single = pd.read_csv(location)
-        print("df_single created through csv")
-        return df_single
-    
+
 #2. If not, from spreadsheets    
-    except: #if the except is executed, the try has given an error, so it does not exist in csv (we use the spreadsheets backup)   
         try:
             sheet = gc.open("business_afi_scraping_df_single").sheet1  #Abrir spreadhseet
             data_from_spreadsheets = sheet.get_all_records()  #Obtener todos los registros
@@ -469,16 +366,13 @@ def main_df(location,gc):
             
         else: #if it doesn't give an error, it exists in spreadsheets and we won't do anything
             pass
-            
-    else: #f it doesn't give an error, it exists in csv and we won't do anything
-        pass
 
 df_single = main_df("../files/df_single.csv",gc)
 
 
 # #### Step 2: Append new records in the df_single dataFrame - pd.concat()
 
-# In[25]:
+# In[17]:
 
 
 def df_append_new_files(final_date_hyphen_products,final_date_slash_products,final_date_number_products,final_name_products,final_id_products,final_brand_products,final_price_products_list,final_price_products_status,urls_products_list):
@@ -500,7 +394,7 @@ def df_append_new_files(final_date_hyphen_products,final_date_slash_products,fin
 df_append_new_files = df_append_new_files(final_date_hyphen_products,final_date_slash_products,final_date_number_products,final_name_products,final_id_products,final_brand_products,final_price_products_list,final_price_products_status,urls_products_list)
 
 
-# In[26]:
+# In[18]:
 
 
 def concat_df(df_single,df_append_new_files):
@@ -518,7 +412,7 @@ df_single = concat_df(df_single,df_append_new_files)
 
 # ### b) Clean and Prepare the dataFrame
 
-# In[27]:
+# In[19]:
 
 
 def corregir_gam_name(url,product_name):
@@ -559,7 +453,7 @@ def corregir_gam_brand_hbada_rep(url,product_brand):
         return product_brand
 
 
-# In[28]:
+# In[20]:
 
 
 def correction_df_single(df_single):
@@ -580,7 +474,7 @@ df_single = correction_df_single(df_single)
 
 # ### c) Create the price main of each product (for the total period; for the last 7 days; for the last 30 days)
 
-# In[29]:
+# In[21]:
 
 
 #product mean (TOTAL DAYS)
@@ -626,7 +520,7 @@ product_mean30 = product_mean_dic30(df_single### b) Clean and Prepare the dataFr
 )
 
 
-# In[30]:
+# In[22]:
 
 
 def product_mean_dic_to_df(df_single,product_mean):
@@ -648,7 +542,7 @@ def product_mean_dic_to_df30(df_single,product_mean30):
 df_single = product_mean_dic_to_df30(df_single,product_mean30)
 
 
-# In[31]:
+# In[23]:
 
 
 def product_mean_status_func_values(product_price,product_mean):
@@ -664,7 +558,7 @@ def product_mean_status_func_values(product_price,product_mean):
         return "revisar, aviso"
 
 
-# In[32]:
+# In[24]:
 
 
 def product_mean_status_func_apply(df_single):
@@ -674,7 +568,7 @@ def product_mean_status_func_apply(df_single):
 df_single = product_mean_status_func_apply(df_single)
 
 
-# In[33]:
+# In[25]:
 
 
 def categories_url(product_url):
@@ -690,7 +584,7 @@ def categories_url(product_url):
         return "alerta sin categoria"
 
 
-# In[34]:
+# In[26]:
 
 
 def product_category(df_single):
@@ -702,7 +596,7 @@ df_single = product_category(df_single)
 
 # ### e) Create a "count" column
 
-# In[35]:
+# In[27]:
 
 
 def product_count(df_single):
@@ -714,7 +608,7 @@ df_single = product_count(df_single)
 
 # ### f) Limit the the amount of data only to a year
 
-# In[36]:
+# In[28]:
 
 
 def acotar_df_un_ano(df_single):
@@ -726,128 +620,6 @@ def acotar_df_un_ano(df_single):
         return df_single
     
 df_single = acotar_df_un_ano(df_single)
-
-
-# ## EXPORT the dataFrames to CSVs
-
-# In[37]:
-
-
-def export_files(df_single, df_append_new_files):
-    df_single_to_csv = df_single.to_csv("../files/df_single.csv", sep=",", index=False)
-    df_append_new_files_to_csv = df_append_new_files.to_csv("../files/df_append_new_files_last_day.csv", sep=",", index=False)#+str(datetime.today().strftime('%Y-%m-%d'))+".csv", sep=",", index=False)
-    out_of_stock_df = df_append_new_files[df_append_new_files["status"] != "correcto"]
-    out_of_stock_df_to_csv = out_of_stock_df.to_csv("../files/out_of_stock_last_day.csv", sep=",", index=False)
-    
-    none_values = df_single[df_single["product_name"]=="none"].any().unique().tolist()
-    if none_values == [True]:
-        none_values_df = df_single[df_single["product_name"]=="none"]
-        none_values_df_to_csv = none_values_df.to_csv("../files/non_values_last_day.csv", sep=",", index=False)
-    
-    return "files exported successfully"
-
-export = export_files(df_single, df_append_new_files)
-export
-
-
-# # C. p_analysis
-
-# We are going to study the values looking for errors to create alerts via email
-
-# ### - EMAIL ALERTS
-
-# In[38]:
-
-
-def business_afi_email_sender(receiver_email, filename_location, csv_name, body_email, email_key):
-
-    subject = "sillas y bienestar | "+ csv_name + " | " + str(datetime.today().strftime('%Y-%m-%d'))
-    body = body_email 
-    sender_email = "businessafiliacion@gmail.com"
-    receiver_email = receiver_email
-    password = email_key
-    
-    # Create a multipart message and set headers
-    message = MIMEMultipart()
-    message["From"] = sender_email
-    message["To"] = receiver_email
-    message["Subject"] = subject
-    message["Bcc"] = receiver_email  # Recommended for mass emails
-    
-    # Add body to email
-    message.attach(MIMEText(body, "plain"))
-    
-    filename = filename_location
-    
-    # Open PDF file in binary mode
-    with open(filename, "rb") as attachment:
-        # Add file as application/octet-stream
-        # Email client can usually download this automatically as attachment
-        part = MIMEBase("application", "octet-stream")
-        part.set_payload(attachment.read())
-    
-    # Encode file in ASCII characters to send by email    
-    encoders.encode_base64(part)
-    
-    # Add header as key/value pair to attachment part
-    part.add_header(
-        "Content-Disposition",
-        f"attachment; filename= {filename}",
-    )     
-    
-    # Add attachment to message and convert message to string
-    message.attach(part)
-    text = message.as_string()
-
-    # Log in to server using secure context and send email
-    context = ssl.create_default_context()
-    with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
-        server.login(sender_email, password)
-        server.sendmail(sender_email, receiver_email, text)
-        
-    return "email " + csv_name + " sended"
-
-
-# #### 1) out of stock or discontinued
-
-# In[39]:
-
-
-business_afi_email_sender("businessafiliacion@gmail.com","../files/out_of_stock_last_day.csv", "out_of_stock_last_day.csv", "CSV con productos descatalogados o fuera de stock",email_key)
-
-
-# #### 2) none values
-
-# In[40]:
-
-
-def email_none_values(df_single, df_append_new_files,email_key):
-    none_values = df_single[df_single["product_name"]=="none"].any().unique().tolist()
-    if none_values == [True]:       
-        business_afi_email_sender("businessafiliacion@gmail.com", "../files/non_values_last_day.csv", "non_values_last_day.csv", "CSV con valores none",email_key)       
-        return "ALERT ALVARO, exists none values"
-    else:
-        return "does not exist none values"
-
-
-# In[41]:
-
-
-email_none_values(df_single, df_append_new_files,email_key)
-
-
-# #### 3) send the csv to have a backup
-
-# In[42]:
-
-
-business_afi_email_sender("businessafiliacion@gmail.com", "../files/df_single.csv", "df_single.csv", "CSV PRINCIPAL como backup con el dataframe diario con todos los datos en formato csv",email_key)
-
-
-# In[43]:
-
-
-business_afi_email_sender("businessafiliacion@gmail.com", "../files/df_append_new_files_last_day.csv", "df_append_new_files_last_day.csv", "CSV CON DATOS DEL DIA como backup con el dataframe diario en formato csv",email_key)
 
 
 # # D. p_reporting
@@ -862,7 +634,7 @@ business_afi_email_sender("businessafiliacion@gmail.com", "../files/df_append_ne
 
 # The conection has been done in the "p_wrangling" module. The output is located in the variable "gc"
 
-# In[44]:
+# In[29]:
 
 
 def update_spreadsheet(gc, spreadsheet_name, worksheet_name, dataframe):
@@ -877,21 +649,21 @@ def update_spreadsheet(gc, spreadsheet_name, worksheet_name, dataframe):
     return "worksheet updated"
 
 
-# In[45]:
+# In[30]:
 
 
 #sheet1 - df_single
 update_spreadsheet(gc, "business_afi_scraping_df_single", "df_single", df_single)
 
 
-# In[46]:
+# In[31]:
 
 
 #sheet2 - df_append_new_files
 update_spreadsheet(gc, "business_afi_scraping_last_day_files", "df_append_new_files", df_append_new_files)
 
 
-# In[47]:
+# In[32]:
 
 
 #sheet3 - out_of_stock_df
@@ -903,7 +675,7 @@ def out_of_stock_spreadsheet(df_append_new_files,gc):
 out_of_stock_spreadsheet(df_append_new_files,gc)
 
 
-# In[48]:
+# In[33]:
 
 
 #sheet4 - none_values_df
@@ -920,19 +692,19 @@ def non_values_spreadsheet(df_single):
 non_values_spreadsheet(df_single)
 
 
-# In[49]:
+# In[34]:
 
 
 #df_single.head()
 
 
-# In[50]:
+# In[35]:
 
 
 #df_single.tail(5)
 
 
-# In[51]:
+# In[36]:
 
 
 #len(df_single)
